@@ -168,24 +168,24 @@ def getips(try_count, blacklist):
     while(good_ip == 0) and(counter < try_count):
         
         #get an IP
-        currip,local_ip, server = ipgetter.myip()
+        external_ip, local_ip, server = ipgetter.myip()
         
         #check to see that it has a ###.###.###.### format
-        if pattern.match(currip) and currip not in blacklist:
+        if pattern.match(external_ip) and external_ip not in blacklist:
             good_ip = 1
-            print ("GetIP: Try %d: Good IP: %s" % (counter+1, currip))
+            print ("GetIP: Try %d: Good IP: %s" % (counter+1, external_ip))
         else:
-            if currip in blacklist:
-                print ("GetIP: Try %d:  Bad IP (in Blacklist): %s" % (counter+1, currip))
+            if external_ip in blacklist:
+                print ("GetIP: Try %d:  Bad IP (in Blacklist): %s" % (counter+1, external_ip))
             else:
-                print ("GetIP: Try %d:  Bad IP    (malformed): %s" % (counter+1, currip))
+                print ("GetIP: Try %d:  Bad IP    (malformed): %s" % (counter+1, external_ip))
         
         #increment the counter
         counter = counter + 1
         
-    #print ("My IP = %s\r\n" % currip)
+    #print ("My IP = %s\r\n" % external_ip)
     #print ("Server used = %s\r\n" % server)
-    return currip, local_ip, server
+    return external_ip, local_ip, server
 
 #get old IP address
 def getoldips(filepath):
@@ -321,7 +321,7 @@ else:
 
     #get current, external, IP address
     curr_external_ip, curr_local_ip, server = getips(int(config.try_count), config.ip_blacklist)
-    #print ("Curr IP = %s" % currip)
+    #print ("Curr IP = %s" % external_ip)
     #print ("Server used = %s" % server)
 
     #check to see if the IP address has changed
