@@ -203,7 +203,7 @@ def getoldips(filepath):
                 old_local_ip = old_text[1].rstrip()
             else:
                 savefile.close()
-                return "malformed", ""
+                return "malformed", "malformed"
 #         oldip = savefile.read(15).rstrip()
         pattern = re.compile("^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$")
         if (pattern.match(old_external_ip) and pattern.match(old_local_ip)):
@@ -212,10 +212,10 @@ def getoldips(filepath):
             #print ("oldip = %s\r\n" % oldip)
         else:
             savefile.close()
-            return "malformed", ""
+            return "malformed", "malformed"
             #print ("malformed IP or empty file: ignoring\r\n")
     else:
-        return "nofile", ""
+        return "nofile", "nofile"
         #print ("file doesn't exist\r\n")
 
 
@@ -251,10 +251,10 @@ Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-The IP address of """ + machine + """ has changed:
-    Old external IP = """ + old_external_ip + """\r\n    Old local IP = """ + old_local_ip + 
-                       """\r\n   New external IP = """ + new_external_ip + """\r\n  New local IP = """ + 
+The IP address of """ + machine + """ has changed:\n\Old external IP = """ + old_external_ip + """\r\nOld local IP = """
+                       + old_local_ip + """\r\nNew external IP = """ + new_external_ip + """\r\nNew local IP = """ +
                        new_local_ip + """\r\nThe Server queried was """ + server)
+
 
         #print (messages)
         #print (smtp_addr)
