@@ -251,7 +251,7 @@ Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-The IP address of """ + machine + """ has changed:\n\Old external IP = """ + old_external_ip + """\r\nOld local IP = """
+The IP address of """ + machine + """ has changed:\nOld external IP = """ + old_external_ip + """\r\nOld local IP = """
                        + old_local_ip + """\r\nNew external IP = """ + new_external_ip + """\r\nNew local IP = """ +
                        new_local_ip + """\r\nThe Server queried was """ + server)
 
